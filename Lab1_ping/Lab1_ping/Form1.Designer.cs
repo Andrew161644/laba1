@@ -52,8 +52,8 @@
             this.label_broadcast = new System.Windows.Forms.Label();
             this.label_gateway = new System.Windows.Forms.Label();
             this.groupBox_scanning = new System.Windows.Forms.GroupBox();
-            this.groupBox_analysis = new System.Windows.Forms.GroupBox();
             this.progressBar_scan = new System.Windows.Forms.ProgressBar();
+            this.groupBox_analysis = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_scanning)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud2)).BeginInit();
@@ -69,6 +69,10 @@
             // 
             // dataGridView_scanning
             // 
+            this.dataGridView_scanning.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView_scanning.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView_scanning.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_scanning.Location = new System.Drawing.Point(386, 12);
             this.dataGridView_scanning.Name = "dataGridView_scanning";
@@ -253,6 +257,13 @@
             this.groupBox_scanning.TabStop = false;
             this.groupBox_scanning.Text = "Сканирование диапазона";
             // 
+            // progressBar_scan
+            // 
+            this.progressBar_scan.Location = new System.Drawing.Point(7, 123);
+            this.progressBar_scan.Name = "progressBar_scan";
+            this.progressBar_scan.Size = new System.Drawing.Size(319, 29);
+            this.progressBar_scan.TabIndex = 10;
+            // 
             // groupBox_analysis
             // 
             this.groupBox_analysis.Controls.Add(this.textBox_broadcast);
@@ -271,13 +282,6 @@
             this.groupBox_analysis.TabIndex = 20;
             this.groupBox_analysis.TabStop = false;
             this.groupBox_analysis.Text = "Анализ подсети";
-            // 
-            // progressBar_scan
-            // 
-            this.progressBar_scan.Location = new System.Drawing.Point(7, 123);
-            this.progressBar_scan.Name = "progressBar_scan";
-            this.progressBar_scan.Size = new System.Drawing.Size(319, 29);
-            this.progressBar_scan.TabIndex = 10;
             // 
             // Form1
             // 

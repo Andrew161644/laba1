@@ -59,6 +59,7 @@
     <Compile Include="MIp.cs" />
     <Compile Include="IScunner.cs" />
     <Compile Include="ISping.cs" />
+    <Compile Include="MTaskShelder.cs" />
     <Compile Include="Pinger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

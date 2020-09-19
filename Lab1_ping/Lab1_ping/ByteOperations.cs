@@ -124,7 +124,37 @@ namespace ConsoleApp1
             return new Address(a,b,c,d);
 
         }
-        
+
+        public Address incAdress(Address address)
+        {
+            if (address.S4!=255)
+            {
+                address.S4 += 1;
+                return address;
+            }
+
+            address.S4 = 0;
+            if (address.S3!=255)
+            {    
+                address.S3 += 1;
+                return address;
+            }
+            address.S3 = 0;
+            if (address.S2!=255)
+            {
+                address.S2 += 1;
+                return address;
+            }
+
+            address.S2 = 0;
+            if (address.S1!=255)
+            {
+                address.S1 += 1;
+                return address;
+            }
+
+            return null;
+        }
     }
     
 }

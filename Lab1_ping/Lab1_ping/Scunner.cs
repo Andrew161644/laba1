@@ -7,7 +7,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Lab1_ping;
-
+using System.Threading;
+using System.Threading.Tasks;
 namespace ConsoleApp1
 {
     public class Scunner:IScunner
@@ -26,6 +27,22 @@ namespace ConsoleApp1
             Task t = Task.Factory.StartNew(() =>
             {
                 List<Task> tasks = new List<Task>();
+                
+                MTaskShelder lcts = new MTaskShelder(255);
+              
+                TaskFactory factory = new TaskFactory(lcts);
+                foreach (MIp ip in addresses)
+                {
+                    Task t1 =factory.StartNew(() =>
+                    {
+                        new Pinger().ping(ip); 
+                        output.add(ip);
+                    });
+                    tasks.Add(t1);
+                }
+                
+                /*int max = 255;
+                int col = 0;
                 foreach (MIp ip in addresses)
                 {
                     Task task = Task.Factory.StartNew(() =>
@@ -34,17 +51,20 @@ namespace ConsoleApp1
                         output.add(ip);
                     });
                     tasks.Add(task);
-                }
+                    col++;
+                    if (col == max)
+                    {
+                        Task.WaitAny(tasks.ToArray());
+                        col = 0;
+                    }
+                }*/
+
+                
                 try
                 { 
                     Task.WaitAll(tasks.ToArray());
                     output.update(addresses);
-                    /*foreach (MIp ip in addresses)
-                    {
-                        Debug.WriteLine("Out "+ip+" "+ip._status);
-                        
-                        // dataGridView.Invoke(new Set((s) => dataGridView.Rows.Add(s,s.hostname,s._status)),ip);
-                    }*/
+                
                    
                 }
                 catch (Exception e)

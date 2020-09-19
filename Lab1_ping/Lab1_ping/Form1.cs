@@ -80,8 +80,8 @@ namespace Lab1_ping
             textBox_mask.Text = mask.ToString();
             textBox_network.Text = network.ToString();
             textBox_broadcast.Text = chanel.ToString();
-            network.S4 += 1;
-            textBox_gateway.Text = network.ToString();
+            Address gateway= _byteOperations.incAdress(network);
+            textBox_gateway.Text = gateway.ToString();
         }
 
         private  void btn_scan_Click(object sender, EventArgs e)
@@ -107,7 +107,7 @@ namespace Lab1_ping
             Debug.WriteLine("Generation complete");
             Scunner scunner=new Scunner(l);
             
-           scunner.scan(new  ScunnerOutputContent(dataGridView_scanning,barUpdater));
+            scunner.scan(new  ScunnerOutputContent(dataGridView_scanning,barUpdater));
             
             Debug.WriteLine("exit");
             
