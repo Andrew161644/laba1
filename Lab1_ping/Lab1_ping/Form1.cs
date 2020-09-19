@@ -31,11 +31,11 @@ namespace Lab1_ping
             nud7.Maximum = 255;
             nud8.Maximum = 255;
             
-            nud1.Value = 255;
+            nud1.Value = 173;
             nud2.Value = 250;
-            nud3.Value = 254;
+            nud3.Value = 240;
             nud4.Value = 0;
-            nud5.Value = 255;
+            nud5.Value = 173;
             nud6.Value = 250;
             nud7.Value = 255;   
             nud8.Value = 0;
@@ -102,12 +102,20 @@ namespace Lab1_ping
                 Decimal.ToInt32(nud8.Value));
             Debug.WriteLine(start);
             Debug.WriteLine(finish);
-            ArrayList l=_generator.generate(start, finish);
-            BarUpdater barUpdater=new BarUpdater(progressBar_scan,l.Count);
-            Debug.WriteLine("Generation complete");
-            Scunner scunner=new Scunner(l);
+            Task.Factory.StartNew(() =>
+            {
+                ArrayList l=new ArrayList();
+                Task t=Task.Factory.StartNew(() =>
+                    {
+                        l=_generator.generate(start, finish);
+                    });
+                Task.WaitAll(t);
+                BarUpdater barUpdater=new BarUpdater(progressBar_scan,l.Count);
+                Debug.WriteLine("Generation complete");
+                Scunner scunner=new Scunner(l);
+                scunner.scan(new  ScunnerOutputContent(dataGridView_scanning,barUpdater));
+            });
             
-            scunner.scan(new  ScunnerOutputContent(dataGridView_scanning,barUpdater));
             
             Debug.WriteLine("exit");
             

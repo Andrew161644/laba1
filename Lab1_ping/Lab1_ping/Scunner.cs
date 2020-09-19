@@ -27,8 +27,7 @@ namespace ConsoleApp1
             Task t = Task.Factory.StartNew(() =>
             {
                 List<Task> tasks = new List<Task>();
-                
-                MTaskShelder lcts = new MTaskShelder(255);
+                MTaskShelder lcts = new MTaskShelder(100);
               
                 TaskFactory factory = new TaskFactory(lcts);
                 foreach (MIp ip in addresses)
@@ -54,7 +53,7 @@ namespace ConsoleApp1
                     col++;
                     if (col == max)
                     {
-                        Task.WaitAny(tasks.ToArray());
+                        Task.WaitAll(tasks.ToArray());
                         col = 0;
                     }
                 }*/
